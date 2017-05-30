@@ -1,6 +1,6 @@
 <template>
 	<div class="input-group">
-		<input class="form-control sm" id="btn-input" type="text" name="message" placeholder="Type your message here..." v-model='newMessage' @keyup.enter='sendMessage'>
+		<input class="form-control sm" id="btn-input" type="text" name="message" placeholder="Type your message here..." v-model="newMessage" @keyup.enter='sendMessage'>
 		<span class="input-group-btn">
 			<button class="btn btn-primary btn-sm" id="btn-chat" @click='sendMessage'>Send</button>
 		</span>
@@ -9,7 +9,12 @@
 
 <script type="text/javascript">
 	export default {
-		props: ['user'],
+		props: {
+			user: {
+				type: Object,
+				required: true,
+			},
+		},
 
 		data() {
 			return {

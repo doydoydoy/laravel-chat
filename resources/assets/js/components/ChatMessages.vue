@@ -1,7 +1,13 @@
+<style scoped>
+	.red {
+		color: red;
+	}
+</style>
+
 <template>
 	<ul class="chat">
 		<li class="left clearfix" v-for='message in messages'>
-			<div class="chat-body clearfix">
+			<div :class="'chat-body clearfix ' + (message.user.id == user.id ? 'red' : '')">
 				<div class="header">
 					<strong class="primary-font">
 						{{ message.user.name }}
@@ -17,6 +23,16 @@
 
 <script type="text/javascript">
 	export default {
-		props: ['messages']
+		props: {
+			user: {
+				type: Object,
+				required: true,
+			},
+
+			messages: {
+				type: Array,
+				required: true,
+			},
+		}
 	};
 </script>
